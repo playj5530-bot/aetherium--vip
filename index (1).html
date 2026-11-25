@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AETHERIUM QUANTUM CAPITAL & SOVEREIGN EXCHANGE</title>
+  <style>
+    :root {
+      --bg-obsidian: #06080d;
+      --bg-panel: #0d121c;
+      --bg-card: #121926;
+      --border-subtle: rgba(212, 175, 55, 0.22);
+      --border-emerald: rgba(16, 185, 129, 0.35);
+      --gold-primary: #d4af37;
+      --gold-light: #f3e5ab;
+      --emerald-neon: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.18);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --danger: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-obsidian);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Barra Superior de Programa de Referidos */
+    .referral-banner {
+      background: linear-gradient(90deg, #091e16 0%, #112a20 50%, #091e16 100%);
+      border-bottom: 1px solid var(--border-emerald);
+      padding: 10px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.88rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    .referral-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: #a7f3d0;
+    }
+
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: var(--emerald-neon);
+      box-shadow: 0 0 10px var(--emerald-neon);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.6; }
+    }
+
+    .referral-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ref-stat {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border-emerald);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-family: monospace;
+      color: var(--emerald-neon);
+      font-weight: 700;
+    }
+
+    .btn-sm {
+      background: var(--emerald-neon);
+      color: #03150e;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-sm:hover {
+      background: #34d399;
+      transform: translateY(-1px);
+    }
+
+    .btn-gold-sm {
+      background: linear-gradient(135deg, var(--gold-primary), #b59020);
+      color: #090b10;
+    }
+
+    /* Ticker Soberano */
+    .ticker-wrap {
+      background: #080b12;
+      border-bottom: 1px solid var(--border-subtle);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 7px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--gold-light);
+    }
+
+    .ticker-move {
+      display: inline-block;
+      animation: ticker 32s linear infinite;
+    }
+
+    .ticker-item {
+      display: inline-block;
+      margin-right: 42px;
+    }
+
+    .ticker-up { color: var(--emerald-neon); }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Header Institucional */
+    header {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-crest {
+      width: 46px;
+      height: 46px;
+      border: 1.5px solid var(--gold-primary);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: var(--gold-primary);
+      background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.22), transparent);
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .brand-title h1 {
+      font-size: 1.15rem;
+      letter-spacing: 1.8px;
+      font-weight: 800;
+      color: var(--gold-light);
+    }
+
+    .brand-title span {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .vip-pill {
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border: 1px solid var(--border-subtle);
+      background: rgba(212, 175, 55, 0.08);
+      color: var(--gold-primary);
+    }
+
+    .vip-pill.active {
+      border-color: var(--emerald-neon);
+      background: var(--emerald-glow);
+      color: var(--emerald-neon);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-primary), #9e7b18);
+      color: #07090e;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.86rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.08);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold-light);
+      border: 1px solid var(--border-subtle);
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.84rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    /* Main Layout */
+    main {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* KPI Strip */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .kpi-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+
+    .kpi-label {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .kpi-value {
+      font-size: 1.65rem;
+      font-weight: 800;
+      margin: 6px 0;
+      font-family: 'JetBrains Mono', monospace;
+      color: #ffffff;
+    }
+
+    .kpi-sub {
+      font-size: 0.8rem;
+      color: var(--emerald-neon);
+      font-weight: 600;
+    }
+
+    /* Grid Principal */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 12px;
+    }
+
+    .panel-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    canvas#quantumChart {
+      width: 100%;
+      height: 270px;
+      background: #080c14;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Wallet Rápida y Enlace Compartible */
+    .wallet-box {
+      background: linear-gradient(145deg, #101726, #0a0f18);
+      border: 1px solid var(--border-emerald);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .wallet-address-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #05080f;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--emerald-neon);
+      word-break: break-all;
+    }
+
+    .share-link-box {
+      background: rgba(212, 175, 55, 0.06);
+      border: 1px dashed var(--gold-primary);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .share-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .share-input {
+      flex: 1;
+      background: #060911;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text-main);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.8rem;
+    }
+
+    /* Order Book & Ledger */
+    .orderbook-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+
+    .ob-col {
+      background: #090d16;
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .ob-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .bid { color: var(--emerald-neon); }
+    .ask { color: #f87171; }
+
+    .ledger-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .ledger-table th, .ledger-table td {
+      text-align: left;
+      padding: 10px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .ledger-table th {
+      color: var(--text-muted);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+    }
+
+    .hash-tag {
+      font-family: monospace;
+      color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* Modal VIP */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 4, 9, 0.84);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #0e1420;
+      border: 1px solid var(--gold-primary);
+      border-radius: 16px;
+      max-width: 540px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .qr-section {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #080c14;
+      border: 1px solid var(--border-subtle);
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .form-control {
+      background: #060911;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0d261c;
+      border: 1px solid var(--emerald-neon);
+      color: #ecfdf5;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: translateY(14px);
+      transition: all 0.25s ease;
+      z-index: 3000;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      max-width: 1380px;
+      margin: 12px auto 32px;
+      padding: 18px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado de Programa de Referidos -->
+  <div class="referral-banner">
+    <div class="referral-badge">
+      <span class="pulse-dot"></span>
+      <span>PROGRAMA DE REFERIDOS ACTIVO: Gana <strong>0.50 USDT</strong> al instante por cada referido verificado</span>
+    </div>
+    <div class="referral-controls">
+      <span class="ref-stat">Referidos: <span id="refCount">0</span> | Bono: <span id="refEarnings">0.00</span> USDT</span>
+      <button class="btn-sm" onclick="copyReferralLink()">Copiar Enlace de Invitación</button>
+      <button class="btn-sm btn-gold-sm" onclick="openVipModal()">Depositar desde 1 USDT</button>
+    </div>
+  </div>
+
+  <!-- Ticker en vivo -->
+  <div class="ticker-wrap">
+    <div class="ticker-move">
+      <span class="ticker-item">AETH/USDT $1,482.90 <span class="ticker-up">+4.82%</span></span>
+      <span class="ticker-item">SOV-GOLD $2,794.50 <span class="ticker-up">+1.94%</span></span>
+      <span class="ticker-item">Q-LIQUIDITY POOL $48.92B <span class="ticker-up">+12.4%</span></span>
+      <span class="ticker-item">USDT/BEP20 APY 18.6% <span class="ticker-up">VERIFIED</span></span>
+      <span class="ticker-item">BASILEA IV TIER-1 RATIO 24.8% <span class="ticker-up">AAA</span></span>
+      <span class="ticker-item">AETH/USDT $1,482.90 <span class="ticker-up">+4.82%</span></span>
+      <span class="ticker-item">SOV-GOLD $2,794.50 <span class="ticker-up">+1.94%</span></span>
+      <span class="ticker-item">Q-LIQUIDITY POOL $48.92B <span class="ticker-up">+12.4%</span></span>
+      <span class="ticker-item">USDT/BEP20 APY 18.6% <span class="ticker-up">VERIFIED</span></span>
+      <span class="ticker-item">BASILEA IV TIER-1 RATIO 24.8% <span class="ticker-up">AAA</span></span>
+    </div>
+  </div>
+
+  <!-- Header Principal -->
+  <header>
+    <div class="brand">
+      <div class="brand-crest">Æ</div>
+      <div class="brand-title">
+        <h1>AETHERIUM QUANTUM CAPITAL</h1>
+        <span>Sovereign Liquidity &amp; Private Institutional Exchange • Zúrich / Singapur</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span id="vipStatusBadge" class="vip-pill">ESTATUS: ESTÁNDAR (MÍN. 1 USDT PARA VIP)</span>
+      <button class="btn-outline" onclick="sharePlatform()">Compartir Página</button>
+      <button class="btn-primary" onclick="openVipModal()">Acceso VIP • Depósito USDT</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- KPIs Financieros -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Ingresos Mensuales Protocolo</div>
+        <div class="kpi-value" id="monthlyRev">$1,284,920,410</div>
+        <div class="kpi-sub">▲ +18.4% vs ciclo anterior • Auditado ZK-Proof</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Volumen Liquidado 24h</div>
+        <div class="kpi-value" id="dailyVol">$64,812,300</div>
+        <div class="kpi-sub">▲ Latencia de ejecución: 0.42 ms</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Tu Balance USDT (Depósitos + Referidos)</div>
+        <div class="kpi-value" id="userBalance">0.00 USDT</div>
+        <div class="kpi-sub" id="userTierSub">Deposita mín. 1.00 USDT para activar VIP</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Recompensa por Referido</div>
+        <div class="kpi-value">0.50 USDT</div>
+        <div class="kpi-sub">Acreditación automática en red EVM</div>
+      </div>
+    </section>
+
+    <!-- Panel Central y Wallet Oficial -->
+    <section class="dashboard-grid">
+      <!-- Gráfico Cuántico en Tiempo Real -->
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Motor de Arbitraje Cuántico Soberano (AETH/USDT)</span>
+          <button class="btn-sm" onclick="executeQuantumOrder()">Ejecutar Orden Institucional</button>
+        </div>
+        <canvas id="quantumChart" width="760" height="270"></canvas>
+
+        <div class="panel-header" style="margin-top: 6px;">
+          <span class="panel-title">Libro de Órdenes L3 en Vivo</span>
+          <span style="font-size:0.75rem; color:var(--emerald-neon);">Spread: 0.01 USDT</span>
+        </div>
+        <div class="orderbook-grid">
+          <div class="ob-col" id="bidsList"></div>
+          <div class="ob-col" id="asksList"></div>
+        </div>
+      </div>
+
+      <!-- Tarjeta de Depósito Oficial & Página de Enlace Compartible -->
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Depósito VIP Oficial (Mín. 1 USDT)</span>
+          <span style="font-size:0.75rem; color:var(--gold-primary);">BEP-20 / ERC-20 / POLYGON</span>
+        </div>
+
+        <div class="wallet-box">
+          <div style="font-size:0.82rem; color:var(--text-muted);">
+            Dirección Oficial de Depósito USDT (Copia directa):
+          </div>
+          <div class="wallet-address-row">
+            <span id="mainWalletAddr">0xdbeB567fB2c0c1FE14a8E772e09d2B280288ddCe</span>
+            <button class="btn-sm" onclick="copyWallet()">Copiar</button>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn-primary" style="flex:1;" onclick="openVipModal()">Verificar Depósito VIP (≥ 1 USDT)</button>
+          </div>
+        </div>
+
+        <!-- Página de Enlace y Compartir -->
+        <div class="share-link-box">
+          <div style="font-size:0.84rem; font-weight:700; color:var(--gold-light);">
+            Tu Página de Enlace Personalizada (+0.50 USDT / Referido)
+          </div>
+          <div style="font-size:0.78rem; color:var(--text-muted);">
+            Comparte este enlace directo. Cada usuario que se registre y active su cuenta te suma <strong>0.50 USDT</strong> automáticamente.
+          </div>
+          <div class="share-row">
+            <input type="text" id="referralUrlInput" class="share-input" readonly />
+            <button class="btn-sm" onclick="copyReferralLink()">Copiar Enlace</button>
+          </div>
+          <div style="display:flex; gap:8px; margin-top:4px; flex-wrap:wrap;">
+            <button class="btn-outline" style="flex:1; font-size:0.78rem;" onclick="shareWhatsApp()">Compartir WhatsApp</button>
+            <button class="btn-outline" style="flex:1; font-size:0.78rem;" onclick="shareTelegram()">Compartir Telegram</button>
+            <button class="btn-outline" style="flex:1; font-size:0.78rem;" onclick="simulateReferral()">Simular Referido (+0.50 USDT)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registro Auditable ZK-Proof -->
+    <section class="panel">
+      <div class="panel-header">
+        <span class="panel-title">Libro Mayor Inmutable &amp; Auditoría Criptográfica</span>
+        <span style="font-size:0.76rem; color:var(--text-muted);">ISO 20022 • Basilea IV • ZK-Rollup Settlement</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="ledger-table">
+          <thead>
+            <tr>
+              <th>Hash Transacción</th>
+              <th>Operación</th>
+              <th>Red / Activo</th>
+              <th>Monto</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="ledgerBody">
+            <tr>
+              <td><span class="hash-tag">0x9f84...e21a</span></td>
+              <td>Liquidez Soberana Pool #01</td>
+              <td>USDT (BEP-20)</td>
+              <td class="bid">+250,000.00 USDT</td>
+              <td style="color:var(--emerald-neon);">CONFIRMADO</td>
+            </tr>
+            <tr>
+              <td><span class="hash-tag">0x3c71...89b4</span></td>
+              <td>Acreditación Institucional VIP</td>
+              <td>USDT (Polygon)</td>
+              <td class="bid">+15,400.00 USDT</td>
+              <td style="color:var(--emerald-neon);">CONFIRMADO</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 AETHERIUM QUANTUM CAPITAL &amp; SOVEREIGN EXCHANGE. Todos los derechos reservados.</span>
+    <span>Wallet Oficial: 0xdbeB567fB2c0c1FE14a8E772e09d2B280288ddCe • Mínimo VIP: 1.00 USDT</span>
+  </footer>
+
+  <!-- Modal VIP -->
+  <div class="modal-backdrop" id="vipModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 style="color:var(--gold-light); font-size:1.05rem;">ACTIVACIÓN VIP INSTITUCIONAL</h3>
+          <span style="font-size:0.78rem; color:var(--emerald-neon);">Depósito mínimo: 1.00 USDT • Bono Referido: 0.50 USDT</span>
+        </div>
+        <button class="close-btn" onclick="closeVipModal()">&times;</button>
+      </div>
+
+      <div class="qr-section">
+        <canvas id="qrCanvas" width="110" height="110" style="background:#fff; padding:6px; border-radius:8px; flex-shrink:0;"></canvas>
+        <div style="display:flex; flex-direction:column; gap:6px; font-size:0.8rem;">
+          <strong style="color:var(--gold-light);">Wallet Oficial de Depósito (EVM)</strong>
+          <span style="font-family:monospace; color:var(--emerald-neon); word-break:break-all;">0xdbeB567fB2c0c1FE14a8E772e09d2B280288ddCe</span>
+          <button class="btn-sm" style="align-self:flex-start;" onclick="copyWallet()">Copiar Dirección Exacta</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Selecciona Red de Transferencia USDT</label>
+        <select id="networkSelect" class="form-control">
+          <option value="BEP-20 (BNB Smart Chain)">BEP-20 (BNB Smart Chain) — Comisión mínima</option>
+          <option value="Polygon (POS)">Polygon (POS) — Confirmación instantánea</option>
+          <option value="ERC-20 (Ethereum)">ERC-20 (Ethereum Mainnet)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Monto a Depositar en USDT (Mínimo 1.00 USDT)</label>
+        <input type="number" id="depositAmount" class="form-control" min="1" step="0.5" value="1.00" />
+      </div>
+
+      <div class="form-group">
+        <label>Hash de Transacción (TxID) o Comprobante (Opcional para validación rápida)</label>
+        <input type="text" id="txHashInput" class="form-control" placeholder="Ej. 0x7a9f...31c8" />
+      </div>
+
+      <button class="btn-primary" onclick="confirmVipDeposit()">Confirmar Depósito y Activar Estatus VIP</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const OFFICIAL_WALLET = "0xdbeB567fB2c0c1FE14a8E772e09d2B280288ddCe";
+    let userBalance = 0.0;
+    let referralCount = 0;
+    let isVip = false;
+
+    // Generar código y enlace único de referido basado en la URL actual
+    function initReferralLink() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const refFromUrl = urlParams.get("ref");
+      let myCode = localStorage.getItem("aeth_ref_code");
+      if (!myCode) {
+        myCode = "AETH-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+        localStorage.setItem("aeth_ref_code", myCode);
+      }
+      const baseUrl = window.location.href.split("?")[0];
+      const fullShareUrl = `${baseUrl}?ref=${myCode}`;
+      document.getElementById("referralUrlInput").value = fullShareUrl;
+
+      if (refFromUrl) {
+        showToast(`Invitación detectada (${refFromUrl}). Deposita desde 1 USDT para activar VIP.`);
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3200);
+    }
+
+    function copyText(text, label) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(label));
+      } else {
+        const tmp = document.createElement("textarea");
+        tmp.value = text;
+        document.body.appendChild(tmp);
+        tmp.select();
+        document.execCommand("copy");
+        document.body.removeChild(tmp);
+        showToast(label);
+      }
+    }
+
+    function copyWallet() {
+      copyText(OFFICIAL_WALLET, "Wallet oficial copiada: " + OFFICIAL_WALLET);
+    }
+
+    function copyReferralLink() {
+      const link = document.getElementById("referralUrlInput").value;
+      copyText(link, "Enlace de referido copiado (+0.50 USDT por invitación)");
+    }
+
+    function sharePlatform() {
+      const link = document.getElementById("referralUrlInput").value;
+      if (navigator.share) {
+        navigator.share({
+          title: "AETHERIUM QUANTUM CAPITAL",
+          text: "Únete a Aetherium Quantum Capital. Acceso VIP desde 1 USDT y gana 0.50 USDT por cada referido:",
+          url: link
+        }).catch(() => copyReferralLink());
+      } else {
+        copyReferralLink();
+      }
+    }
+
+    function shareWhatsApp() {
+      const link = encodeURIComponent(document.getElementById("referralUrlInput").value);
+      const text = encodeURIComponent("Accede a Aetherium Quantum Capital (VIP desde 1 USDT) y gana 0.50 USDT por referido: ");
+      window.open(`https://wa.me/?text=${text}${link}`, "_blank");
+    }
+
+    function shareTelegram() {
+      const link = encodeURIComponent(document.getElementById("referralUrlInput").value);
+      const text = encodeURIComponent("Aetherium Quantum Capital • Depósito VIP desde 1 USDT y 0.50 USDT por referido");
+      window.open(`https://t.me/share/url?url=${link}&text=${text}`, "_blank");
+    }
+
+    function updateUI() {
+      document.getElementById("userBalance").textContent = userBalance.toFixed(2) + " USDT";
+      document.getElementById("refCount").textContent = referralCount;
+      document.getElementById("refEarnings").textContent = (referralCount * 0.5).toFixed(2);
+
+      const badge = document.getElementById("vipStatusBadge");
+      const sub = document.getElementById("userTierSub");
+      if (isVip) {
+        badge.textContent = "ESTATUS: MIEMBRO VIP INSTITUCIONAL ACTIVO";
+        badge.classList.add("active");
+        sub.textContent = "Acceso VIP desbloqueado • Rendimiento prioritario activo";
+      }
+    }
+
+    function addLedgerRow(op, net, amount) {
+      const tbody = document.getElementById("ledgerBody");
+      const hash = "0x" + Math.random().toString(16).substring(2, 6) + "..." + Math.random().toString(16).substring(2, 6);
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><span class="hash-tag">${hash}</span></td>
+        <td>${op}</td>
+        <td>${net}</td>
+        <td class="bid">+${amount.toFixed(2)} USDT</td>
+        <td style="color:var(--emerald-neon);">CONFIRMADO</td>
+      `;
+      tbody.prepend(tr);
+    }
+
+    function simulateReferral() {
+      referralCount += 1;
+      userBalance += 0.50;
+      updateUI();
+      addLedgerRow("Bono Referido Verificado (#" + referralCount + ")", "USDT (EVM)", 0.50);
+      showToast("¡Nuevo referido verificado! +0.50 USDT acreditados a tu balance.");
+    }
+
+    function openVipModal() {
+      document.getElementById("vipModal").classList.add("open");
+      drawDeterministicQR();
+    }
+
+    function closeVipModal() {
+      document.getElementById("vipModal").classList.remove("open");
+    }
+
+    function confirmVipDeposit() {
+      const amount = parseFloat(document.getElementById("depositAmount").value);
+      const network = document.getElementById("networkSelect").value;
+      if (isNaN(amount) || amount < 1.0) {
+        showToast("Error: El depósito mínimo para VIP es de 1.00 USDT.");
+        return;
+      }
+      userBalance += amount;
+      isVip = true;
+      updateUI();
+      addLedgerRow("Depósito Activación VIP", network, amount);
+      closeVipModal();
+      showToast(`¡Depósito de ${amount.toFixed(2)} USDT confirmado! Estatus VIP activado.`);
+    }
+
+    function executeQuantumOrder() {
+      const gain = (Math.random() * 14 + 3.5);
+      addLedgerRow("Ejecución Arbitraje Cuántico AETH", "Pool Soberano", gain);
+      showToast(`Orden ejecutada con éxito (+${gain.toFixed(2)} USDT liquidez capturada).`);
+    }
+
+    // Código QR visual determinista asociado a la wallet oficial
+    function drawDeterministicQR() {
+      const canvas = document.getElementById("qrCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      const size = 21;
+      const cell = Math.floor(canvas.width / size);
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#06080d";
+
+      function drawFinder(ox, oy) {
+        ctx.fillRect(ox * cell, oy * cell, 7 * cell, 7 * cell);
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect((ox + 1) * cell, (oy + 1) * cell, 5 * cell, 5 * cell);
+        ctx.fillStyle = "#06080d";
+        ctx.fillRect((ox + 2) * cell, (oy + 2) * cell, 3 * cell, 3 * cell);
+      }
+
+      drawFinder(0, 0);
+      drawFinder(size - 7, 0);
+      drawFinder(0, size - 7);
+
+      let seed = 0;
+      for (let i = 0; i < OFFICIAL_WALLET.length; i++) {
+        seed = (seed * 31 + OFFICIAL_WALLET.charCodeAt(i)) % 1000003;
+      }
+
+      for (let r = 0; r < size; r++) {
+        for (let c = 0; c < size; c++) {
+          const inFinder =
+            (r < 8 && c < 8) ||
+            (r < 8 && c >= size - 8) ||
+            (r >= size - 8 && c < 8);
+          if (inFinder) continue;
+          seed = (seed * 16807) % 2147483647;
+          if (seed % 2 === 0) {
+            ctx.fillRect(c * cell, r * cell, cell, cell);
+          }
+        }
+      }
+    }
+
+    // Libro de órdenes dinámico
+    function renderOrderBook() {
+      const bidsEl = document.getElementById("bidsList");
+      const asksEl = document.getElementById("asksList");
+      let bidsHtml = "<div style='color:#94a3b8; margin-bottom:6px;'>COMPRA (BIDS)</div>";
+      let asksHtml = "<div style='color:#94a3b8; margin-bottom:6px;'>VENTA (ASKS)</div>";
+      for (let i = 0; i < 5; i++) {
+        const bp = (1482.85 - i * 0.15).toFixed(2);
+        const bq = (Math.random() * 45 + 12).toFixed(2);
+        const ap = (1482.95 + i * 0.15).toFixed(2);
+        const aq = (Math.random() * 45 + 10).toFixed(2);
+        bidsHtml += `<div class="ob-row"><span class="bid">${bp}</span><span>${bq}</span></div>`;
+        asksHtml += `<div class="ob-row"><span class="ask">${ap}</span><span>${aq}</span></div>`;
+      }
+      bidsEl.innerHTML = bidsHtml;
+      asksEl.innerHTML = asksHtml;
+    }
+
+    // Gráfico Canvas animado
+    const chartPoints = Array.from({ length: 40 }, (_, i) => 1460 + Math.sin(i * 0.3) * 12 + i * 0.5);
+    function drawChart() {
+      const canvas = document.getElementById("quantumChart");
+      const ctx = canvas.getContext("2d");
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      // Grid
+      ctx.strokeStyle = "rgba(255,255,255,0.05)";
+      ctx.lineWidth = 1;
+      for (let y = 30; y < h; y += 45) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+      }
+
+      const min = Math.min(...chartPoints) - 5;
+      const max = Math.max(...chartPoints) + 5;
+      const stepX = w / (chartPoints.length - 1);
+
+      const grad = ctx.createLinearGradient(0, 0, 0, h);
+      grad.addColorStop(0, "rgba(16, 185, 129, 0.32)");
+      grad.addColorStop(1, "rgba(16, 185, 129, 0.0)");
+
+      ctx.beginPath();
+      chartPoints.forEach((val, idx) => {
+        const x = idx * stepX;
+        const y = h - ((val - min) / (max - min)) * (h - 40) - 20;
+        if (idx === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+
+      ctx.strokeStyle = "#10b981";
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      ctx.lineTo(w, h);
+      ctx.lineTo(0, h);
+      ctx.closePath();
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    setInterval(() => {
+      const last = chartPoints[chartPoints.length - 1];
+      const next = last + (Math.random() - 0.46) * 2.8;
+      chartPoints.shift();
+      chartPoints.push(next);
+      drawChart();
+      renderOrderBook();
+    }, 2200);
+
+    initReferralLink();
+    drawChart();
+    renderOrderBook();
+  </script>
+</body>
+</html>
